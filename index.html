@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RůžovýPapier.sk – Luxusný ružový toaletný papier</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:    #f472b6;
+    --pink-d:  #db2777;
+    --pink-l:  #fce7f3;
+    --cream:   #fff8f5;
+    --dark:    #1a0a0f;
+    --mid:     #6b2d4a;
+    --white:   #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,248,245,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #f9a8d4;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2.5rem;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--pink-d);
+    letter-spacing: .02em;
+  }
+  .logo span { font-style: italic; color: var(--pink); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav a {
+    text-decoration: none; font-size: .9rem; font-weight: 500;
+    color: var(--mid);
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--pink-d); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center;
+    padding: 7rem 2rem 4rem;
+    background:
+      radial-gradient(ellipse at 20% 50%, #fce7f3 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, #fbcfe8 0%, transparent 50%),
+      var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative circles */
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: .15;
+    pointer-events: none;
+  }
+  .hero::before {
+    width: 600px; height: 600px;
+    background: var(--pink);
+    top: -200px; right: -200px;
+  }
+  .hero::after {
+    width: 400px; height: 400px;
+    background: var(--pink-d);
+    bottom: -150px; left: -150px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--pink-l);
+    color: var(--pink-d);
+    border: 1px solid #f9a8d4;
+    border-radius: 99px;
+    padding: .35rem 1.1rem;
+    font-size: .8rem; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp .8s ease both;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.08;
+    color: var(--dark);
+    max-width: 800px;
+    animation: fadeUp .9s .1s ease both;
+  }
+  h1 em { color: var(--pink-d); font-style: italic; }
+
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: 1.15rem; color: var(--mid);
+    max-width: 520px;
+    font-weight: 300; line-height: 1.65;
+    animation: fadeUp 1s .2s ease both;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1s .3s ease both;
+  }
+
+  .btn {
+    padding: .85rem 2rem;
+    border-radius: 99px;
+    font-size: .95rem; font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform .2s, box-shadow .2s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--pink-d);
+    color: #fff;
+    box-shadow: 0 6px 30px #db277740;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px #db277760; }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--pink-d);
+    color: var(--pink-d);
+  }
+  .btn-ghost:hover { background: var(--pink-l); transform: translateY(-2px); }
+
+  /* paper roll hero image */
+  .hero-img {
+    margin-top: 3.5rem;
+    width: 260px; height: 260px;
+    background:
+      radial-gradient(circle at 35% 35%, #fff 18%, transparent 19%),
+      radial-gradient(circle at 65% 65%, #fce7f3 12%, transparent 13%),
+      conic-gradient(from 0deg, #f9a8d4, #ec4899, #db2777, #f472b6, #fbcfe8, #f9a8d4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    box-shadow: 0 20px 60px #db277740;
+    animation: float 4s ease-in-out infinite, fadeUp 1s .4s ease both;
+  }
+
+  /* inner hole of roll */
+  .hero-img::after {
+    content: '';
+    width: 80px; height: 80px;
+    background: var(--cream);
+    border-radius: 50%;
+    box-shadow: inset 0 4px 12px #db277740;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-16px); }
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(24px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; max-width: 1100px; margin: auto; }
+
+  .section-label {
+    font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--pink-d); font-weight: 600;
+    margin-bottom: .75rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+  h2 em { color: var(--pink-d); font-style: italic; }
+
+  /* ── HOW WE MAKE IT ── */
+  .process {
+    background: var(--white);
+    border-radius: 2rem;
+    padding: 4rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto 6rem;
+    box-shadow: 0 4px 40px #f9a8d420;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .step {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .step-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: .6rem;
+    color: var(--pink-d);
+  }
+  .step p { font-size: .9rem; color: var(--mid); line-height: 1.6; }
+
+  /* ── PRODUCT ── */
+  .product-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto 6rem;
+    padding: 0 2rem;
+  }
+  @media(max-width:700px){ .product-wrap { grid-template-columns:1fr; } }
+
+  .product-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    height: 380px;
+  }
+
+  /* Big decorative roll */
+  .roll {
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(255,255,255,.9) 18%, transparent 19%),
+      conic-gradient(from 0deg, #f9a8d4 0%, #ec4899 25%, #db2777 45%, #f472b6 65%, #fbcfe8 85%, #f9a8d4 100%);
+    box-shadow: 0 16px 60px #db277750;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .roll::after {
+    content: '';
+    width: 72px; height: 72px;
+    background: var(--cream);
+    border-radius: 50%;
+    box-shadow: inset 0 4px 10px #db277730;
+  }
+  /* sheets peeking out */
+  .roll::before {
+    content: '';
+    position: absolute;
+    right: -36px; top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 110px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #fce7f3 0, #fce7f3 14px,
+      #f9a8d4 14px, #f9a8d4 15px
+    );
+    border-radius: 0 8px 8px 0;
+    box-shadow: 4px 4px 12px #db277720;
+  }
+
+  .product-info h2 { margin-bottom: 1rem; }
+  .product-info p { font-size: 1rem; color: var(--mid); line-height: 1.7; margin-bottom: 1rem; }
+
+  .composition {
+    background: var(--pink-l);
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .composition h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--pink-d);
+    margin-bottom: 1rem;
+  }
+  .comp-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .4rem 0;
+    border-bottom: 1px solid #f9a8d450;
+    font-size: .9rem;
+  }
+  .comp-row:last-child { border: none; }
+  .comp-row span:last-child { font-weight: 600; color: var(--pink-d); }
+
+  /* ── PRICING ── */
+  .pricing-wrap {
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto 6rem;
+    padding: 0 2rem;
+  }
+
+  .price-card {
+    display: inline-block;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 2rem;
+    padding: 3.5rem 4rem;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px #1a0a0f40;
+    margin-top: 2.5rem;
+  }
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--pink-d);
+    opacity: .18;
+  }
+  .price-badge {
+    background: var(--pink-d);
+    color: #fff;
+    border-radius: 99px;
+    display: inline-block;
+    padding: .3rem 1rem;
+    font-size: .78rem; text-transform: uppercase;
+    letter-spacing: .1em; font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--pink);
+  }
+  .price-amount sup { font-size: 2rem; vertical-align: top; margin-top: .6rem; display: inline-block; }
+  .price-period { font-size: .9rem; color: #f9a8d4; margin-top: .4rem; margin-bottom: 2rem; }
+  .price-features { list-style: none; text-align: left; margin: 1.5rem 0 2rem; }
+  .price-features li {
+    padding: .5rem 0;
+    border-bottom: 1px solid #ffffff15;
+    font-size: .95rem;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  .price-features li::before { content: '🌸'; font-size: 1rem; }
+  .price-features li:last-child { border: none; }
+
+  /* ── CEO ── */
+  .ceo-wrap {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--white);
+    border-radius: 2rem;
+    padding: 3.5rem;
+    max-width: 900px;
+    margin: 0 auto 6rem;
+    box-shadow: 0 4px 40px #f9a8d420;
+  }
+  @media(max-width:600px){ .ceo-wrap { grid-template-columns:1fr; text-align:center; } }
+
+  .ceo-avatar {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 40% 35%, #fbcfe8, #db2777);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    box-shadow: 0 8px 32px #db277750;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .ceo-avatar::after {
+    content: '👑';
+    position: absolute;
+    top: -10px; right: 0;
+    font-size: 2rem;
+  }
+
+  .ceo-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: .25rem;
+  }
+  .ceo-title {
+    color: var(--pink-d); font-size: .9rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-bottom: 1rem;
+  }
+  .ceo-bio { font-size: .97rem; color: var(--mid); line-height: 1.75; }
+  .ceo-quote {
+    margin-top: 1.25rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--pink-d);
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--pink);
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+  .contact-grid {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .contact-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    min-width: 200px;
+    box-shadow: 0 4px 24px #f9a8d420;
+    text-align: center;
+    border: 1px solid #fce7f3;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .contact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px #f9a8d440; }
+  .contact-icon { font-size: 2.2rem; margin-bottom: .75rem; display: block; }
+  .contact-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--pink-d); margin-bottom: .4rem; font-weight: 600; }
+  .contact-value { font-size: .97rem; color: var(--dark); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: #f9a8d4;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: .88rem;
+  }
+  footer strong { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Ružový<span>Papier</span>.sk</div>
+  <ul>
+    <li><a href="#ako-to-robime">Výroba</a></li>
+    <li><a href="#produkt">Produkt</a></li>
+    <li><a href="#cena">Cena</a></li>
+    <li><a href="#sef">O nás</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌸 Luxusný toaletný papier zo Slovenska</div>
+  <h1>Toaletný papier, ktorý si <em>zaslúžite</em></h1>
+  <p class="hero-sub">Ružový, jemný a priamo na váš záchod. Stála dodávka bez starostí, každý mesiac, vždy načas.</p>
+  <div class="hero-cta">
+    <a href="#cena" class="btn btn-primary">Objednať odber – 20 € / mes.</a>
+    <a href="#produkt" class="btn btn-ghost">Zistiť viac</a>
+  </div>
+  <div class="hero-img"></div>
+</div>
+
+<!-- AKO TO ROBÍME -->
+<div class="process" id="ako-to-robime">
+  <p class="section-label">Naša výroba</p>
+  <h2>Ako vzniká náš <em>ružový papier</em></h2>
+  <p style="color:var(--mid); max-width:600px; line-height:1.7;">Každý kotúč prechádza prísnou kontrolou kvality v našom závode v Lišcí Údolí. Používame iba certifikované suroviny a prírodné farbivá.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-icon">🌲</span>
+      <h3>Certifikovaná celulóza</h3>
+      <p>Používame FSC-certifikovanú buničinu z udržateľných lesov. Žiadne škodlivé chemikálie.</p>
+    </div>
+    <div class="step">
+      <span class="step-icon">🎨</span>
+      <h3>Prírodné ružové farbivo</h3>
+      <p>Farbíme výhradne extraktom z červenej repy a ibišku. Farba je dermatologicky testovaná.</p>
+    </div>
+    <div class="step">
+      <span class="step-icon">🏭</span>
+      <h3>Lisovanie a razenie</h3>
+      <p>Moderné stroje vytvoria prémiový vzor s trojvrstvovou štruktúrou pre maximálnu jemnosť.</p>
+    </div>
+    <div class="step">
+      <span class="step-icon">🌸</span>
+      <h3>Vôňa ruží</h3>
+      <p>Každý kotúč je jemne parfumovaný esenciou divokej ruže. Dlhodobá, nenápadná vôňa.</p>
+    </div>
+    <div class="step">
+      <span class="step-icon">📦</span>
+      <h3>Balenie a expedícia</h3>
+      <p>Eko-balenie z recyklovaného papiera. Odosielame priamo k vám domov každý mesiac.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUKT -->
+<div class="product-wrap" id="produkt">
+  <div class="product-visual">
+    <div class="roll"></div>
+  </div>
+  <div class="product-info">
+    <p class="section-label">Náš produkt</p>
+    <h2>Prémiový ružový <em>kotúč</em></h2>
+    <p>Trojvrstvový toaletný papier s ružovým tónovaním a jemným vzorovaním. Každý kotúč obsahuje 250 útržkov a je navrhnutý pre maximálne pohodlie pri každodennom používaní.</p>
+
+    <div class="composition">
+      <h4>📋 Zloženie a vlastnosti</h4>
+      <div class="comp-row"><span>Celulóza (FSC certifikát)</span><span>98 %</span></div>
+      <div class="comp-row"><span>Prírodné farbivo (extrakt z repy)</span><span>1,5 %</span></div>
+      <div class="comp-row"><span>Esencia divokej ruže</span><span>0,5 %</span></div>
+      <div class="comp-row"><span>Počet vrstiev</span><span>3 vrstvy</span></div>
+      <div class="comp-row"><span>Útržkov na kotúči</span><span>250 ks</span></div>
+      <div class="comp-row"><span>Dermatologicky testovaný</span><span>✅ Áno</span></div>
+      <div class="comp-row"><span>Bez chloru a fosfátov</span><span>✅ Áno</span></div>
+      <div class="comp-row"><span>Rozložiteľný v kanalizácii</span><span>✅ Áno</span></div>
+    </div>
+    <a href="#cena" class="btn btn-primary">Objednať stálu dodávku</a>
+  </div>
+</div>
+
+<!-- CENA -->
+<div class="pricing-wrap" id="cena">
+  <p class="section-label">Predplatné</p>
+  <h2>Jednoduchá <em>cena</em>, žiadne prekvapenia</h2>
+  <p style="color:var(--mid); max-width:500px; margin: auto; line-height:1.7;">Stála mesačná dodávka priamo na váš záchod. Zaplaťte raz a my sa postaráme o zvyšok.</p>
+
+  <div class="price-card">
+    <div class="price-badge">Mesačný odber</div>
+    <div class="price-amount"><sup>€</sup>20</div>
+    <p class="price-period">za mesiac · stála dodávka · bez viazanosti</p>
+    <ul class="price-features">
+      <li>Dodávka priamo na váš záchod každý mesiac</li>
+      <li>1 kotúč prémiového ružového papiera (250 útržkov)</li>
+      <li>Prírodné farbivá, dermatologicky testované</li>
+      <li>Ekologické balenie bez plastov</li>
+      <li>Zákaznícka podpora 7 dní v týždni</li>
+      <li>Zrušenie kedykoľvek, bez poplatku</li>
+    </ul>
+    <a href="#kontakt" class="btn btn-primary" style="width:100%; text-align:center; display:block;">Chcem odber →</a>
+  </div>
+</div>
+
+<!-- CEO -->
+<section id="sef" style="max-width:100%; padding:0;">
+  <p class="section-label" style="text-align:center; margin-bottom:1rem;">Vedenie spoločnosti</p>
+  <div class="ceo-wrap">
+    <div class="ceo-avatar">👩</div>
+    <div class="ceo-info">
+      <h3>Kim</h3>
+      <p class="ceo-title">Generálny riaditeľ & Zakladateľ · RůžovýPapier.sk</p>
+      <p class="ceo-bio">
+        Kim je vizionár s 15-ročnou praxou v prémiových spotrebných tovaroch. Po rokoch v medzinárodných korporáciách sa rozhodol založiť niečo naozaj výnimočné – spoločnosť, ktorá prináša luxus aj do tých najintímnejších momentov dňa.
+        Pod jeho vedením firma vyrastila z garážového projektu na vedúceho výrobcu farebného toaletného papieru na Slovensku. Kim sa osobne podieľa na vývoji každého nového produktu, trvá na najvyššej kvalite surovín a buduje firemnú kultúru postavenú na rešpekte, kreativite a dôveryhodnosti.
+        Kolegovia ho opisujú ako šéfa, ktorý vždy prvý príde do práce a posledný odchádza – a pritom si vždy nájde čas vypočuť každého zo svojho tímu.
+      </p>
+      <p class="ceo-quote">"Veríme, že luxus nie je len o veľkých veciach. Je to o každom detaile – aj o tom, čo nájdete na záchode."</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<div class="contact-wrap" id="kontakt">
+  <p class="section-label">Kontakt</p>
+  <h2>Napíšte nám <em>kedykoľvek</em></h2>
+  <p style="color:var(--mid); max-width:480px; margin:auto; line-height:1.7;">Sme tu pre vás od pondelka do nedele. Objednajte odber alebo sa nás na čokoľvek opýtajte.</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="contact-icon">📞</span>
+      <p class="contact-label">Telefón</p>
+      <p class="contact-value">0954 657 021</p>
+    </div>
+    <div class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <p class="contact-label">E-mail</p>
+      <p class="contact-value">tolat@gg.coc</p>
+    </div>
+    <div class="contact-card">
+      <span class="contact-icon">📍</span>
+      <p class="contact-label">Sídlo firmy</p>
+      <p class="contact-value">Lišcie Údolie, Slovensko</p>
+    </div>
+  </div>
+  <div style="margin-top:3rem;">
+    <a href="tel:0954657021" class="btn btn-primary">Zavolať teraz</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>RůžovýPapier.sk</strong> · Lišcie Údolie, Slovensko · Všetky práva vyhradené</p>
+  <p style="margin-top:.5rem; opacity:.6; font-size:.8rem;">Vyrobené s láskou 🌸 a certifikovanou celulózou na Slovensku</p>
+</footer>
+
+</body>
+</html>
